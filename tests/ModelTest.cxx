@@ -1,6 +1,7 @@
-#include <gtest/gtest.h>
 #include "CSVReader.h"
 #include "TFClassifier.h"
+
+#include <gtest/gtest.h>
 
 #ifdef _WIN32
 	const std::string testCasesPath = ".\\tests\\test_cases\\";
@@ -31,5 +32,11 @@ TEST(FashionMnistTest, First) {
     all++;
   }
 
-  ASSERT_NEAR((double)positive/all, 0.91, 1e-2);
+  ASSERT_NEAR(static_cast<double>(positive)/all, 0.91, 1e-2);
+}
+
+int main(int argc, char **argv) {
+  testing::InitGoogleTest(&argc, argv);
+
+  return RUN_ALL_TESTS();
 }
